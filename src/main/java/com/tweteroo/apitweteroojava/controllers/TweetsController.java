@@ -46,6 +46,7 @@ public class TweetsController {
 
   @GetMapping("/user/{userId}")
   public ResponseEntity<Object> getTweetsByUserId(@PathVariable Long userId){
-    return ResponseEntity.ok().body("userId: " + userId);
+    List<TweetModel> tweets = tweetService.findByUserId(userId);
+    return ResponseEntity.ok().body(tweets);
   }
 }

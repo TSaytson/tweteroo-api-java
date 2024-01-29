@@ -34,4 +34,9 @@ public class TweetService {
     TweetModel tweet = new TweetModel(body, user.get());
     return tweetRepository.save(tweet);
   }
+
+  public List<TweetModel> findByUserId(Long userId){
+    List<TweetModel> tweets = tweetRepository.findByUserId(userId);
+    return tweets;
+  }
 }
