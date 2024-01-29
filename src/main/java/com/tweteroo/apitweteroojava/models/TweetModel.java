@@ -22,10 +22,10 @@ import lombok.NoArgsConstructor;
 public class TweetModel {
 
   public TweetModel(TweetDTO body){
-    this.tweet = body.getTweet();
+    this.text = body.getText();
   }
   public TweetModel(TweetDTO body, UserModel user){
-    this.tweet = body.getTweet();
+    this.text = body.getText();
     this.user = user;
   }
 
@@ -34,7 +34,7 @@ public class TweetModel {
   private Long id;
 
   @Column(length = 280, nullable = false)
-  private String tweet;
+  private String text;
 
   @ManyToOne
   @JoinColumn(name="user_id")

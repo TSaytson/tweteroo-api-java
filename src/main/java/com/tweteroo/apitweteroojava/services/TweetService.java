@@ -27,7 +27,7 @@ public class TweetService {
   }
 
   public TweetModel create(TweetDTO body) throws FileNotFoundException {
-    Optional<UserModel> user = userRepository.findById(body.getUser_id());
+    Optional<UserModel> user = userRepository.findById(body.getUserId());
     if (!user.isPresent()){
       throw new FileNotFoundException("User does not exists");
     }

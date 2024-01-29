@@ -11,9 +11,9 @@ public class TweetDTO {
 
   @NotBlank(message = "Tweet cannot be empty")
   @Size(max = 280)
-  private String tweet;
+  private String text;
 
   @NotNull(message = "An user is required")
   @Positive(message = "Invalid user")
-  private Long user_id;
+  private Long userId;
 }

@@ -11,6 +11,6 @@ import com.tweteroo.apitweteroojava.models.TweetModel;
 
 @Repository
 public interface TweetRepository extends JpaRepository<TweetModel, Long> {
-  @Query(value = "SELECT * FROM tweets WHERE user_id=:userId", nativeQuery = true)
+  @Query(value = "SELECT * FROM tweets WHERE userId=:userId", nativeQuery = true)
   List<TweetModel> findByUserId(@Param("userId") Long userId);
 }
