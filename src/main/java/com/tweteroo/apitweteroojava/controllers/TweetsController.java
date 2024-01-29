@@ -1,5 +1,6 @@
 package com.tweteroo.apitweteroojava.controllers;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -27,8 +28,14 @@ public class TweetsController {
   }
   
   @PostMapping
-  public ResponseEntity<TweetModel> createTweet(@RequestBody @Valid TweetDTO body){
-    return ResponseEntity.created(null).body(tweetService.create(body));
+  public ResponseEntity<TweetModel> createTweet(@RequestBody @Valid TweetDTO body)
+  throws FileNotFoundException {
+    try {
+      return ResponseEntity.created(null).body(tweetService.create(body));
+      
+    } catch (FileNotFoundException e) {
+      return ResponseEntity.notFound().build();
+    }
   }
 
   @GetMapping
@@ -38,8 +45,7 @@ public class TweetsController {
   }
 
   @GetMapping("/user/{userId}")
-  public ResponseEntity<TweetModel> getTweetsByUserId(@PathVariable Long userId){
-    
-    return ResponseEntity.ok().build();
+  public ResponseEntity<Object> getTweetsByUserId(@PathVariable Long userId){
+    return ResponseEntity.ok().body("userId: " + userId);
   }
 }
