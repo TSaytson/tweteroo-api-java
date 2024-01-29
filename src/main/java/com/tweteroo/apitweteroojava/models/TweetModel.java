@@ -1,5 +1,7 @@
 package com.tweteroo.apitweteroojava.models;
 
+import com.tweteroo.apitweteroojava.dto.TweetDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +18,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "tweets")
 public class TweetModel {
+
+  public TweetModel(TweetDTO body){
+    this.tweet = body.getTweet();
+  }
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
